@@ -1,0 +1,24 @@
+{
+  "info": {
+    "name": "智学云 Sprint 1 API",
+    "_postman_id": "zhixue-sprint1-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key":"baseUrl","value":"http://localhost:3000/api"},
+    {"key":"token","value":""},
+    {"key":"courseId","value":"1"},
+    {"key":"enrollmentId","value":"1"}
+  ],
+  "item": [
+    {"name":"Health","request":{"method":"GET","url":"{{baseUrl}}/health"}},
+    {"name":"Register student","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"name\":\"Demo Student\",\"email\":\"demo@example.com\",\"password\":\"Password123!\"}"},"url":"{{baseUrl}}/auth/register"}},
+    {"name":"Login seeded student","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"email\":\"student@zhixue.local\",\"password\":\"Student123!\"}"},"url":"{{baseUrl}}/auth/login"}},
+    {"name":"Browse published courses","request":{"method":"GET","url":"{{baseUrl}}/courses?search=HTML"}},
+    {"name":"Enroll in course","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/enrollments/courses/{{courseId}}"}},
+    {"name":"Duplicate enrollment should return 409","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/enrollments/courses/{{courseId}}"}},
+    {"name":"Update progress","request":{"method":"PATCH","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\"completedLessons\":4}"},"url":"{{baseUrl}}/enrollments/{{enrollmentId}}/progress"}},
+    {"name":"My progress summary","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/progress/me"}},
+    {"name":"My enrollments","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/enrollments/me"}}
+  ]
+}

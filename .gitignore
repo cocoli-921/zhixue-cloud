@@ -1,0 +1,22 @@
+# node依赖
+node_modules/
+
+# 打包目录
+dist/
+build/
+
+# 环境变量（数据库账号密码，一定要屏蔽！）
+.env
+.env.local
+
+# 日志文件
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# VSCode缓存
+.vscode/
+
+# Windows系统垃圾文件
+Thumbs.db
