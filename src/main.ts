@@ -12,7 +12,7 @@ async function bootstrap() {
 
   const swaggerConfig = new DocumentBuilder()
     .setTitle('智学云 Online Learning Platform API')
-    .setDescription('Sprint 1 API: authentication, course catalog, enrollment and progress tracking')
+    .setDescription('WLearn智学 API: authentication, course catalog, enrollment and progress tracking')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
@@ -21,7 +21,7 @@ async function bootstrap() {
 
   const port = Number(process.env.PORT || 3000);
   await app.listen(port);
-  console.log('智学云后端已启动: http://localhost:' + port + '/api');
+  console.log('WLearn智学后端已启动: http://localhost:' + port + '/api');
   console.log('Swagger 文档: http://localhost:' + port + '/docs');
 }
 bootstrap();
