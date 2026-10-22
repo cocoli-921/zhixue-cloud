@@ -9,9 +9,11 @@ services:
       MYSQL_USER: zhixue
       MYSQL_PASSWORD: zhixue_password
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - zhixue_mysql_data:/var/lib/mysql
-    command: --default-authentication-plugin=mysql_native_password
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
 volumes:
   zhixue_mysql_data:
